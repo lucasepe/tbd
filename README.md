@@ -7,8 +7,8 @@ _"to be defined"_
 
 ## A really simple way to create text templates with placeholders.
 
-> This tool is deliberately simple and trivial, no advanced features. 
->
+This tool is deliberately simple and trivial, no advanced features. 
+
 > If you need advanced templates rendering which supports complex syntax and a huge list of datasources (JSON, YAML,  AWS EC2 metadata, BoltDB, Hashicorp > Consul and Hashicorp Vault secrets), I recommend you use one of these:
 >
 > - [gotemplate](https://github.com/hairyhenderson/gomplate)
@@ -135,3 +135,9 @@ If you don't want to compile the sourcecode yourself, [here you can find the too
 - MacOS
 - Linux
 - Windows
+
+<br/>
+
+#### Credits
+
+Thanks to [@valyala](https://github.com/valyala/) for the [fasttemplate](https://github.com/valyala/fasttemplate) library - which I have modified by adding and removing some functions for the `tbd` purpose.
