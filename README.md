@@ -103,7 +103,26 @@ Example:
 $ tbd -vars testdata/sample1.vars testdata/sample1.yml.tbd
 ```
 
-> 👉 you can also specify an HTTP url to fetch your template and/or placeholders values.
+👉 you can also specify an HTTP url to fetch your template and/or placeholders values.
+
+Example:
+
+```sh
+$ tbd -vars https://raw.githubusercontent.com/lucasepe/tbd/main/testdata/sample2.vars \
+    https://raw.githubusercontent.com/lucasepe/tbd/main/testdata/sample2.txt.tbd
+```
+
+and the output is...
+
+```txt
+Greetings
+
+I will be out of the office from August, 9 until August 23. 
+If you need immediate assistance while I’m away, please email pinco.pallo@gmail.com.
+
+Best,
+Pinco Pallo
+```
 
 ## How to list all template placeholders?
 
