@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ metadata.name }}
+  labels:
+    app: {{ metadata.labels.app }}
+ spec:
+  containers:
+    - name: {{ container.1.name }}
+      image: {{ container.1.image }}
+      ports:
+        - containerPort: {{ container.1.port }}
+    - name: {{ container.2.name }}
+      image: {{ container.2.image }}
+      ports:
+        - containerPort: {{ container.2.port }}

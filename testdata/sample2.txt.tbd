@@ -1,0 +1,7 @@
+{{ greeting }}
+
+I will be out of the office from {{ start.date }} until {{ return.date }}. 
+If you need immediate assistance while I’m away, please email {{ contact.email }}.
+
+Best,
+{{ name }}
