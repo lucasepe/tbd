@@ -5,7 +5,21 @@ import (
 	"errors"
 	"io"
 	"testing"
+
+	"github.com/google/go-cmp/cmp"
 )
+
+func TestMarks(t *testing.T) {
+	got, err := Marks("{{ one }} - {{two}} and {{ three }}", "{{", "}}")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	want := []string{"one", "two", "three"}
+	if !cmp.Equal(got, want) {
+		t.Fatalf("got [%v] wants [%v]", got, want)
+	}
+}
 
 func TestExecuteFunc(t *testing.T) {
 	testExecuteFunc(t, "", "")
