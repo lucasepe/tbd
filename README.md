@@ -1,6 +1,7 @@
 # `tbd`
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/lucasepe/tbd?style=flat-square)](https://goreportcard.com/report/github.com/lucasepe/tbd) &nbsp;&nbsp;&nbsp; [![Release](https://img.shields.io/github/release/lucasepe/tbd.svg?style=flat-square)](https://github.com/lucasepe/tbd/releases/latest)
+[![Go Report Card](https://goreportcard.com/badge/github.com/lucasepe/tbd?style=flat-square)](https://goreportcard.com/report/github.com/lucasepe/tbd) &nbsp;&nbsp;&nbsp;
+[![Release](https://img.shields.io/github/release/lucasepe/tbd.svg?style=flat-square)](https://github.com/lucasepe/tbd/releases/latest) &nbsp;&nbsp;&nbsp;
 
 
 _"to be defined"_
