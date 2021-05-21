@@ -2,7 +2,7 @@
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/lucasepe/tbd?style=flat-square)](https://goreportcard.com/report/github.com/lucasepe/tbd) &nbsp;&nbsp;&nbsp;
 [![Release](https://img.shields.io/github/release/lucasepe/tbd.svg?style=flat-square)](https://github.com/lucasepe/tbd/releases/latest) &nbsp;&nbsp;&nbsp;
-
+[![codecov](https://codecov.io/gh/lucasepe/tbd/branch/main/graph/badge.svg?style=flat-square)](https://codecov.io/gh/lucasepe/tbd)
 
 _"to be defined"_
 
