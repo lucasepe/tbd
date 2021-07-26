@@ -16,6 +16,32 @@ This tool is deliberately simple and trivial, no advanced features.
 > - [pongo2](https://github.com/flosch/pongo2)
 > - [quicktemplate](https://github.com/valyala/quicktemplate)
 
+## Built-in Variables
+
+When executed inside a Git repository, `tbd` automatically exports some variables related to the Git repository which may be useful in the build phase.
+
+These variables are: `ARCH`, `OS`, `REPO_COMMIT`, `REPO_HOST`, `REPO_NAME`, `REPO_ROOT`, `REPO_TAG`, `REPO_TAG_CLEAN`, `REPO_URL`, `TIMESTAMP`.
+
+Try it! With `tbd` in your `PATH`, go in a Git folder and type:
+
+```sh
+$ tbd vars
++----------------+------------------------------------------+
+| ARCH           | amd64                                    |
+| OS             | linux                                    |
+| REPO_COMMIT    | a3193274112d3a6f5c2a0277e2ca07ec238d622f |
+| REPO_HOST      | github.com                               |
+| REPO_NAME      | tbd                                      |
+| REPO_ROOT      | lucasepe                                 |
+| REPO_TAG       | v0.1.1                                   |
+| REPO_TAG_CLEAN | 0.1.1                                    |
+| REPO_URL       | https://github.com/lucasepe/tbd          |
+| TIMESTAMP      | 2021-07-26T14:22:36Z                     |
++----------------+------------------------------------------+
+```
+
+> Obviously in your case the values ​​will be different.
+
 ## How does a template looks like ?
 
 A template is a text document in which you can insert placeholders for the text you want to make dynamic.
@@ -93,14 +119,16 @@ name: Pinco Pallo
 
 ## How fill in the template?
 
+> Use the `merge` command
+
 ```sh
-$ tbd -vars /path/to/your/vars /path/to/your/template
+$ tbd merge /path/to/your/template /path/to/your/envfile
 ```
 
 Example:
 
 ```sh
-$ tbd -vars testdata/sample1.vars testdata/sample1.yml.tbd
+$ tbd merge testdata/sample.tbd testdata/sample.vars
 ```
 
 👉 you can also specify an HTTP url to fetch your template and/or placeholders values.
@@ -108,8 +136,8 @@ $ tbd -vars testdata/sample1.vars testdata/sample1.yml.tbd
 Example:
 
 ```sh
-$ tbd -vars https://raw.githubusercontent.com/lucasepe/tbd/main/testdata/sample2.vars \
-    https://raw.githubusercontent.com/lucasepe/tbd/main/testdata/sample2.txt.tbd
+$ tbd merge https://raw.githubusercontent.com/lucasepe/tbd/main/testdata/sample.tbd \
+    https://raw.githubusercontent.com/lucasepe/tbd/main/testdata/sample.vars
 ```
 
 and the output is...
@@ -126,17 +154,57 @@ Pinco Pallo
 
 ## How to list all template placeholders?
 
-- simply omit the `-vars` flag
+> Use the `marks` command.
 
 ```sh
-$ tbd /path/to/your/template
+$ tbd marks /path/to/your/template
 ```
 
 Example:
 
 ```sh
-$ tbd testdata/sample1.yml.tbd
+$ tbd marks testdata/sample.tbd
+greeting
+start.date
+return.date
+contact.email
+name
 ```
+
+## How to list all variables?
+
+> Use the `vars` command.
+
+```sh
+$ tbd vars /path/to/your/envfile
+```
+
+Example:
+
+```sh
+$ tbd vars testdata/sample.vars
++----------------+------------------------------------------+
+| Label          | Value                                    |
++----------------+------------------------------------------+
+| ARCH           | amd64                                    |
+| OS             | linux                                    |
+| REPO_COMMIT    | a3193274112d3a6f5c2a0277e2ca07ec238d622f |
+| REPO_HOST      | github.com                               |
+| REPO_NAME      | tbd                                      |
+| REPO_ROOT      | lucasepe                                 |
+| REPO_TAG       | v0.1.1                                   |
+| REPO_TAG_CLEAN | 0.1.1                                    |
+| REPO_URL       | https://github.com/lucasepe/tbd          |
+| TIMESTAMP      | 2021-07-26T14:17:49Z                     |
+| contact.email  | pinco.pallo@gmail.com                    |
+| greeting       | Greetings                                |
+| name           | Pinco Pallo                              |
+| return.date    | August 23                                |
+| start.date     | August, 9                                |
++----------------+------------------------------------------+
+```
+
+> As you can see, since I ran the command in a Git repository, there are also relative variables.
 
 # How to install?
 
