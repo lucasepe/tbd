@@ -12,7 +12,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/lucasepe/tbd/internal/bytebufferpool"
+	"github.com/lucasepe/tbd/pkg/internal/bytebufferpool"
 )
 
 // ExecuteFunc calls f on each template tag (placeholder) occurrence.

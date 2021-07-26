@@ -3,7 +3,7 @@ package bytebufferpool_test
 import (
 	"fmt"
 
-	"github.com/lucasepe/tbd/internal/bytebufferpool"
+	"github.com/lucasepe/tbd/pkg/internal/bytebufferpool"
 )
 
 func ExampleByteBuffer() {

@@ -8,10 +8,7 @@ import (
 	"strings"
 )
 
-// Parse reads an env file from io.Reader, returning a map of keys and values.
-func Parse(r io.Reader) (envMap map[string]interface{}, err error) {
-	envMap = make(map[string]interface{})
-
+func ParseInto(r io.Reader, envMap map[string]string) (err error) {
 	var lines []string
 	scanner := bufio.NewScanner(r)
 	for scanner.Scan() {
@@ -36,9 +33,16 @@ func Parse(r io.Reader) (envMap map[string]interface{}, err error) {
 	return
 }
 
+// Parse reads an env file from io.Reader, returning a map of keys and values.
+func Parse(r io.Reader) (envMap map[string]string, err error) {
+	envMap = make(map[string]string)
+	err = ParseInto(r, envMap)
+	return
+}
+
 var exportRegex = regexp.MustCompile(`^\s*(?:export\s+)?(.*?)\s*$`)
 
-func parseLine(line string, envMap map[string]interface{}) (key string, value string, err error) {
+func parseLine(line string, envMap map[string]string) (key string, value string, err error) {
 	if len(line) == 0 {
 		err = errors.New("zero length string")
 		return
@@ -101,7 +105,7 @@ var (
 	unescapeCharsRegex = regexp.MustCompile(`\\([^$])`)
 )
 
-func parseValue(value string, envMap map[string]interface{}) string {
+func parseValue(value string, envMap map[string]string) string {
 
 	// trim
 	value = strings.Trim(value, " ")
@@ -144,7 +148,7 @@ func parseValue(value string, envMap map[string]interface{}) string {
 
 var expandVarRegex = regexp.MustCompile(`(\\)?(\$)(\()?\{?([A-Z0-9_]+)?\}?`)
 
-func expandVariables(v string, m map[string]interface{}) string {
+func expandVariables(v string, m map[string]string) string {
 	return expandVarRegex.ReplaceAllStringFunc(v, func(s string) string {
 		submatch := expandVarRegex.FindStringSubmatch(s)
 		if submatch == nil {
@@ -155,9 +159,7 @@ func expandVariables(v string, m map[string]interface{}) string {
 			return submatch[0][1:]
 		} else if submatch[4] != "" {
 			v := m[submatch[4]]
-			if x, ok := v.(string); ok {
-				return x
-			}
+			return v
 		}
 		return s
 	})
