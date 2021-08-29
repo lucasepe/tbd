@@ -26,12 +26,12 @@ func TestFetchFromURI(t *testing.T) {
 }
 
 func TestFetchFromFile(t *testing.T) {
-	data, err := FetchFromFile("../../testdata/sample1.yml.tbd", 10)
+	data, err := FetchFromFile("../../testdata/sample.tbd", 10)
 	if err != nil {
 		t.Error(err)
 	}
 
-	want := `---apiVer`
+	want := `{{ greetin`
 	if got := flatten(string(data)); got != want {
 		t.Errorf("got [%v] want [%v]", got, want)
 	}
