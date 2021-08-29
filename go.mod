@@ -2,8 +2,6 @@ module github.com/lucasepe/tbd
 
 go 1.16
 
-// replace github.com/lucasepe/cli => ../cli
-
 require (
 	github.com/alexflint/go-arg v1.4.2
 	github.com/go-git/go-git/v5 v5.4.2

@@ -9,9 +9,7 @@ import (
 
 func main() {
 	if err := cmd.Run(); err != nil {
-		if err != nil {
-			fmt.Fprintln(os.Stderr, err)
-			os.Exit(-1)
-		}
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(-1)
 	}
 }
